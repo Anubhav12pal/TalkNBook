@@ -1,0 +1,290 @@
+.booking-page {
+  padding: 0;
+  min-height: calc(100vh - 200px);
+}
+
+.booking-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  background: #374151;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.movie-details {
+  background: #2a2a2a;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #3a3a3a;
+}
+
+.movie-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.movie-info {
+  color: #ccc;
+  font-size: 0.875rem;
+}
+
+.showtime-section {
+  margin-bottom: 2rem;
+}
+
+.showtime-section h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.showtime-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.showtime-button {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #3a3a3a;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+}
+
+.showtime-button:hover {
+  background: #3a3a3a;
+}
+
+.showtime-button.selected {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+.seating-section h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.screen-indicator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.screen {
+  background: linear-gradient(90deg, #3a3a3a, #5a5a5a, #3a3a3a);
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.seating-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.row-label {
+  width: 1.5rem;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.seats {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.seat {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #3a3a3a;
+  border-radius: 0.25rem;
+  background: #2a2a2a;
+  color: white;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.seat.available:hover {
+  background: #3a3a3a;
+  border-color: #4a4a4a;
+}
+
+.seat.selected {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+.seat.booked {
+  background: #666;
+  border-color: #666;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.seat.small {
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.5rem;
+}
+
+.seat-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.booking-summary {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #2a2a2a;
+  border-top: 1px solid #3a3a3a;
+  padding: 1rem;
+  z-index: 100;
+}
+
+.summary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.selected-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: white;
+  font-size: 0.875rem;
+}
+
+.confirm-button {
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.confirm-button:hover {
+  background: #b91c1c;
+}
+
+/* Desktop responsive */
+@media (min-width: 769px) {
+  .booking-page {
+    padding: 2rem 0;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .showtime-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  
+  .showtime-button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .seat {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .seats {
+    gap: 0.5rem;
+  }
+  
+  .seat-row {
+    gap: 1rem;
+  }
+  
+  .booking-summary {
+    position: static;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 0.75rem;
+    margin-top: 2rem;
+  }
+  
+  .selected-info {
+    flex-direction: row;
+    gap: 2rem;
+    font-size: 1rem;
+  }
+  
+  .confirm-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
