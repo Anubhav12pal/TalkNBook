@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
-import './Movies.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -72,11 +71,11 @@ const Movies = () => {
 
   return (
     <Layout>
-      <div className="movies-page">
-        <div className="movies-header">
-          <h1 className="page-title">Movies</h1>
-          <div className="movies-filters">
-            <select className="filter-select">
+      <div className="py-8">
+        <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+          <h1 className="text-4xl font-bold text-white m-0">Movies</h1>
+          <div className="flex gap-4 items-center">
+            <select className="bg-dark-card text-white border border-dark-border rounded-lg px-4 py-2 cursor-pointer text-sm focus:outline-none focus:border-brand-red">
               <option>All Genres</option>
               <option>Action</option>
               <option>Comedy</option>
@@ -86,28 +85,28 @@ const Movies = () => {
             </select>
             <input 
               type="text" 
-              className="search-box" 
+              className="bg-dark-card text-white border border-dark-border rounded-lg px-4 py-2 text-sm w-52 focus:outline-none focus:border-brand-red placeholder-gray-500"
               placeholder="Search movies..."
             />
           </div>
         </div>
-        <div className="movies-grid">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mb-8">
           {movies.map((movie) => (
             <div 
               key={movie.id} 
-              className="movie-card"
+              className="bg-dark-card rounded-xl overflow-hidden cursor-pointer transition-all duration-200 border border-dark-border hover:-translate-y-2 hover:shadow-xl hover:shadow-black/30"
               onClick={() => handleMovieClick(movie)}
             >
-              <div className="movie-poster">
-                <img src={movie.image} alt={movie.title} />
-                <div className="movie-rating">
+              <div className="relative w-full aspect-[2/3]">
+                <img src={movie.image} alt={movie.title} className="w-full h-full object-cover" />
+                <div className="absolute top-2 right-2 bg-black/80 text-white px-2 py-1 rounded text-xs font-semibold">
                   ⭐ {movie.rating}
                 </div>
               </div>
-              <div className="movie-info">
-                <h3 className="movie-title">{movie.title}</h3>
-                <p className="movie-genre">{movie.genre}</p>
-                <p className="movie-duration">{movie.duration}</p>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-white mb-1 leading-tight">{movie.title}</h3>
+                <p className="text-gray-300 text-sm mb-1">{movie.genre}</p>
+                <p className="text-gray-500 text-xs">{movie.duration}</p>
               </div>
             </div>
           ))}
