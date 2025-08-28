@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const Login = ({ onSwitchToSignup }) => {
@@ -6,6 +7,7 @@ const Login = ({ onSwitchToSignup }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,6 +16,8 @@ const Login = ({ onSwitchToSignup }) => {
     const result = await login(email, password);
     if (!result.success) {
       setError(result.error);
+    } else {
+      navigate("/movies");
     }
   };
 

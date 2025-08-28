@@ -5,5 +5,12 @@
     "email": "test@example.com",
     "hashed_password": "$2b$12$7xoz7VicreR7MRDxXtpDVeCtYJI1p2gxC5FCMAcszODm32w2MytC.",
     "created_at": "2025-08-28T19:52:11.130245"
+  },
+  {
+    "id": "2555e27e-7e93-496e-96ef-de7262a977b9",
+    "username": "aa",
+    "email": "abc@gmail.com",
+    "hashed_password": "$2b$12$D3kXadWbitMt7xXnik4CR.XkFjjv4HbRpzJnUoNAymSvNf3I3yJ6i",
+    "created_at": "2025-08-28T22:25:15.023019"
   }
 ]
