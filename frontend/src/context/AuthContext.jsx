@@ -2,6 +2,8 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
+const API_BASE_URL = 'http://localhost:8000';
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -16,7 +18,9 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const savedUser = localStorage.getItem('talknbook_user');
-    if (savedUser) {
+    const savedToken = localStorage.getItem('talknbook_token');
+    
+    if (savedUser && savedToken) {
       setUser(JSON.parse(savedUser));
     }
     setIsLoading(false);
@@ -25,23 +29,28 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setIsLoading(true);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      if (email && password) {
-        const userData = {
-          id: Date.now(),
-          email,
-          name: email.split('@')[0]
-        };
+      const response = await fetch(`${API_BASE_URL}/auth/login-json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        const { access_token, user: userData } = data;
         setUser(userData);
         localStorage.setItem('talknbook_user', JSON.stringify(userData));
+        localStorage.setItem('talknbook_token', access_token);
         return { success: true };
       } else {
-        return { success: false, error: 'Invalid credentials' };
+        return { success: false, error: data.detail || 'Login failed' };
       }
     } catch (error) {
-      return { success: false, error: 'Login failed' };
+      console.error('Login error:', error);
+      return { success: false, error: 'Network error. Please try again.' };
     } finally {
       setIsLoading(false);
     }
@@ -50,27 +59,33 @@ export const AuthProvider = ({ children }) => {
   const signup = async (username, email, password, confirmPassword) => {
     setIsLoading(true);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
       if (password !== confirmPassword) {
+        setIsLoading(false);
         return { success: false, error: 'Passwords do not match' };
       }
-      
-      if (username && email && password) {
-        const userData = {
-          id: Date.now(),
-          email,
-          name: username
-        };
+
+      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        const { access_token, user: userData } = data;
         setUser(userData);
         localStorage.setItem('talknbook_user', JSON.stringify(userData));
+        localStorage.setItem('talknbook_token', access_token);
         return { success: true };
       } else {
-        return { success: false, error: 'All fields are required' };
+        return { success: false, error: data.detail || 'Signup failed' };
       }
     } catch (error) {
-      return { success: false, error: 'Signup failed' };
+      console.error('Signup error:', error);
+      return { success: false, error: 'Network error. Please try again.' };
     } finally {
       setIsLoading(false);
     }
@@ -79,6 +94,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('talknbook_user');
+    localStorage.removeItem('talknbook_token');
   };
 
   const value = {
