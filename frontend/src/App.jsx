@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import AuthWrapper from './components/auth/AuthWrapper';
 import Movies from './pages/Movies';
 import Booking from './pages/Booking';
+import MyBookings from './pages/MyBookings';
 
 const ProtectedRoute = ({ children }) => {
   const { user, isLoading } = useAuth();
@@ -42,6 +43,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Booking />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/my-bookings" 
+              element={
+                <ProtectedRoute>
+                  <MyBookings />
                 </ProtectedRoute>
               } 
             />

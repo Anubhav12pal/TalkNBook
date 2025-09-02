@@ -1,0 +1,47 @@
+[
+  {
+    "id": "7ec0d77b-7f84-40c6-8732-83782630e6c9",
+    "user_id": "11b715f2-e1d6-4f0c-b15d-0d8e8bae7c14",
+    "movie_id": "movie-123",
+    "movie_title": "Test Movie",
+    "showtime": "7:00 PM",
+    "seats": [
+      "A1",
+      "A2"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2025-09-01T23:23:31.274818",
+    "status": "confirmed"
+  },
+  {
+    "id": "b78c31f0-85e3-4b8b-8dcf-6b0cdcf18c22",
+    "user_id": "11b715f2-e1d6-4f0c-b15d-0d8e8bae7c14",
+    "movie_id": "movie-1",
+    "movie_title": "Avengers: Endgame",
+    "showtime": "7:00 PM",
+    "seats": [
+      "A1",
+      "A2",
+      "A3"
+    ],
+    "total_price": 36.0,
+    "booking_date": "2025-09-01T23:38:58.473544",
+    "status": "confirmed"
+  },
+  {
+    "id": "ba86026d-0e58-4b8a-9528-5f80b71ae964",
+    "user_id": "11b715f2-e1d6-4f0c-b15d-0d8e8bae7c14",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "7:00 PM",
+    "seats": [
+      "B3",
+      "B4",
+      "B5",
+      "B8"
+    ],
+    "total_price": 48.0,
+    "booking_date": "2025-09-01T23:44:53.553145",
+    "status": "confirmed"
+  }
+]

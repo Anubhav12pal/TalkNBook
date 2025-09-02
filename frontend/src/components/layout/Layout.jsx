@@ -51,8 +51,12 @@ const Layout = ({ children, showNavigation = true }) => {
                 🎬 Movies
               </button>
               <button 
-                className="bg-transparent text-gray-300 border border-dark-border rounded-lg px-6 py-3 cursor-pointer text-sm font-medium transition-all flex items-center gap-2 hover:bg-dark-border hover:text-white hover:border-gray-500"
-                onClick={() => navigate('/movies')}
+                className={`bg-transparent border border-dark-border rounded-lg px-6 py-3 cursor-pointer text-sm font-medium transition-all flex items-center gap-2 ${
+                  location.pathname === '/my-bookings' 
+                    ? 'bg-brand-red border-brand-red text-white' 
+                    : 'text-gray-300 hover:bg-dark-border hover:text-white hover:border-gray-500'
+                }`}
+                onClick={() => navigate('/my-bookings')}
               >
                 🎟️ My Bookings
               </button>
@@ -66,7 +70,7 @@ const Layout = ({ children, showNavigation = true }) => {
           )}
 
           <div className="flex items-center gap-4 flex-shrink-0">
-            <span className="text-gray-300 text-sm">Welcome, {user?.name}</span>
+            <span className="text-gray-300 text-sm">Welcome, {user?.username || user?.email}</span>
             <button 
               onClick={handleLogout} 
               className="bg-gray-700 text-white border-none rounded-lg px-4 py-2 cursor-pointer text-sm transition-colors hover:bg-gray-600"
@@ -92,9 +96,14 @@ const Layout = ({ children, showNavigation = true }) => {
             <i className="text-xl">🎬</i>
             <span className={`text-xs ${location.pathname === '/movies' ? 'text-brand-red' : 'text-gray-300'}`}>Movies</span>
           </div>
-          <div className="flex flex-col items-center gap-1 cursor-pointer transition-all p-1 rounded-lg hover:bg-dark-border">
+          <div 
+            className={`flex flex-col items-center gap-1 cursor-pointer transition-all p-1 rounded-lg ${
+              location.pathname === '/my-bookings' ? 'bg-dark-border text-brand-red' : 'hover:bg-dark-border'
+            }`}
+            onClick={() => navigate('/my-bookings')}
+          >
             <i className="text-xl">🎟️</i>
-            <span className="text-xs text-gray-300">Bookings</span>
+            <span className={`text-xs ${location.pathname === '/my-bookings' ? 'text-brand-red' : 'text-gray-300'}`}>Bookings</span>
           </div>
           <div className="flex flex-col items-center gap-1 cursor-pointer transition-all p-1 rounded-lg hover:bg-dark-border">
             <i className="text-xl">🔍</i>

@@ -19,5 +19,12 @@
     "email": "anubhavpal97@gmail.com",
     "hashed_password": "$2b$12$zXZzqDVpAYvPxUcvGLG37uvQVLdWp0vix8pNHVA.lmLgy4GX/KQQa",
     "created_at": "2025-08-29T18:23:43.538267"
+  },
+  {
+    "id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "username": "aa@gmail.com",
+    "email": "aa@gmail.com",
+    "hashed_password": "$2b$12$OPaJDdHhWJCE4TpZTG0stu85LYmWWNYZEhQ.b74AhPMZiHq9lvzgC",
+    "created_at": "2025-09-02T04:26:50.657712"
   }
 ]

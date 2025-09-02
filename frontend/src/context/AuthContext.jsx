@@ -2,6 +2,8 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
+export { AuthContext };
+
 const API_BASE_URL = 'http://localhost:8000';
 
 export const useAuth = () => {

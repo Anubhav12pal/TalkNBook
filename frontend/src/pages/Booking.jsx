@@ -1,23 +1,60 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
+import { bookingsAPI, moviesAPI } from '../services/api';
+import { AuthContext } from '../context/AuthContext';
 
 const Booking = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const movie = location.state?.movie;
-
+  const { user } = useContext(AuthContext);
+  
+  const [movie, setMovie] = useState(location.state?.movie || null);
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [bookedSeats, setBookedSeats] = useState(['A3', 'A4', 'B5', 'C2', 'D7']);
-  const [showTimes] = useState(['10:00 AM', '1:00 PM', '4:00 PM', '7:00 PM', '10:00 PM']);
+  const [bookedSeats, setBookedSeats] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [selectedTime, setSelectedTime] = useState('7:00 PM');
 
-  useEffect(() => {
-    if (!movie) {
-      navigate('/movies');
+  // Fetch movie details if not provided via navigation
+  const fetchMovieDetails = async () => {
+    if (!movie && movieId) {
+      try {
+        const movieData = await moviesAPI.getMovieById(movieId);
+        setMovie(movieData);
+      } catch (err) {
+        setError('Failed to load movie details');
+        setTimeout(() => navigate('/movies'), 3000);
+      }
     }
-  }, [movie, navigate]);
+  };
+
+  // Fetch booked seats for current movie and showtime
+  const fetchBookedSeats = async () => {
+    if (!movie) return;
+    
+    try {
+      const data = await bookingsAPI.getBookedSeats(movie.id, selectedTime);
+      setBookedSeats(data.booked_seats);
+    } catch (err) {
+      console.error('Failed to fetch booked seats:', err);
+      setBookedSeats([]);
+    }
+  };
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+    
+    fetchMovieDetails();
+  }, [movieId, user, navigate]);
+
+  useEffect(() => {
+    fetchBookedSeats();
+  }, [movie, selectedTime]);
 
   if (!movie) {
     return null;
@@ -44,24 +81,48 @@ const Booking = () => {
     return 'available';
   };
 
-  const totalPrice = selectedSeats.length * 12;
+  const totalPrice = selectedSeats.length * (movie?.price || 12);
 
-  const handleConfirmBooking = () => {
+  const handleConfirmBooking = async () => {
     if (selectedSeats.length === 0) {
       alert('Please select at least one seat');
       return;
     }
+
+    if (!user) {
+      alert('Please log in to make a booking');
+      navigate('/login');
+      return;
+    }
     
-    const bookingDetails = {
-      movie: movie.title,
-      seats: selectedSeats,
-      time: selectedTime,
-      total: totalPrice
-    };
+    setLoading(true);
+    setError(null);
     
-    alert(`Booking confirmed!\n\nMovie: ${bookingDetails.movie}\nSeats: ${bookingDetails.seats.join(', ')}\nTime: ${bookingDetails.time}\nTotal: $${bookingDetails.total}`);
-    
-    navigate('/movies');
+    try {
+      const bookingData = {
+        movie_id: movie.id,
+        movie_title: movie.title,
+        showtime: selectedTime,
+        seats: selectedSeats,
+        total_price: totalPrice
+      };
+      
+      await bookingsAPI.createBooking(bookingData);
+      
+      alert(`Booking confirmed!\n\nMovie: ${movie.title}\nSeats: ${selectedSeats.join(', ')}\nTime: ${selectedTime}\nTotal: $${totalPrice}`);
+      
+      navigate('/movies');
+    } catch (err) {
+      setError(err.message || 'Failed to create booking');
+      alert(`Booking failed: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleTimeChange = (newTime) => {
+    setSelectedTime(newTime);
+    setSelectedSeats([]); // Clear selected seats when changing time
   };
 
   return (
@@ -85,10 +146,10 @@ const Booking = () => {
         <div className="mb-8">
           <h3 className="text-white mb-4 text-lg">Select Showtime</h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4">
-            {showTimes.map((time) => (
+            {movie?.showtimes?.map((time) => (
               <button
                 key={time}
-                onClick={() => setSelectedTime(time)}
+                onClick={() => handleTimeChange(time)}
                 className={`border border-dark-border rounded-lg px-4 py-3 md:py-4 cursor-pointer transition-all text-sm md:text-base ${
                   selectedTime === time 
                     ? 'bg-brand-red border-brand-red text-white' 
@@ -167,9 +228,14 @@ const Booking = () => {
               </div>
               <button 
                 onClick={handleConfirmBooking}
-                className="bg-brand-red text-white border-none rounded-lg px-6 py-3 md:px-8 md:py-4 cursor-pointer font-semibold transition-colors hover:bg-red-700 text-sm md:text-base"
+                disabled={loading}
+                className={`text-white border-none rounded-lg px-6 py-3 md:px-8 md:py-4 cursor-pointer font-semibold transition-colors text-sm md:text-base ${
+                  loading 
+                    ? 'bg-gray-600 cursor-not-allowed' 
+                    : 'bg-brand-red hover:bg-red-700'
+                }`}
               >
-                Confirm Booking
+                {loading ? 'Booking...' : 'Confirm Booking'}
               </button>
             </div>
           </div>

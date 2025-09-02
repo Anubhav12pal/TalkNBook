@@ -1,0 +1,68 @@
+[
+  {
+    "id": "movie-1",
+    "title": "Avengers: Endgame",
+    "genre": "Action",
+    "duration": "181 min",
+    "rating": "8.4",
+    "description": "After the devastating events of Avengers: Infinity War, the universe is in ruins.",
+    "image": "https://via.placeholder.com/300x450/333/fff?text=Avengers",
+    "showtimes": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM", "10:00 PM"],
+    "price": 12.0
+  },
+  {
+    "id": "movie-2",
+    "title": "Spider-Man: No Way Home",
+    "genre": "Action",
+    "duration": "148 min",
+    "rating": "8.2",
+    "description": "Spider-Man's identity is revealed and he asks Doctor Strange for help.",
+    "image": "https://via.placeholder.com/300x450/333/fff?text=Spider-Man",
+    "showtimes": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM", "10:00 PM"],
+    "price": 12.0
+  },
+  {
+    "id": "movie-3",
+    "title": "The Batman",
+    "genre": "Action",
+    "duration": "176 min",
+    "rating": "7.8",
+    "description": "Batman ventures into Gotham City's underworld when a sadistic killer leaves behind a trail of cryptic clues.",
+    "image": "https://via.placeholder.com/300x450/333/fff?text=Batman",
+    "showtimes": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM", "10:00 PM"],
+    "price": 12.0
+  },
+  {
+    "id": "movie-4",
+    "title": "Dune",
+    "genre": "Sci-Fi",
+    "duration": "155 min",
+    "rating": "8.0",
+    "description": "Feature adaptation of Frank Herbert's science fiction novel about the son of a noble family.",
+    "image": "https://via.placeholder.com/300x450/333/fff?text=Dune",
+    "showtimes": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM", "10:00 PM"],
+    "price": 12.0
+  },
+  {
+    "id": "movie-5",
+    "title": "Top Gun: Maverick",
+    "genre": "Action",
+    "duration": "130 min",
+    "rating": "8.3",
+    "description": "After thirty years, Maverick is still pushing the envelope as a top naval aviator.",
+    "image": "https://via.placeholder.com/300x450/333/fff?text=Top+Gun",
+    "showtimes": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM", "10:00 PM"],
+    "price": 12.0
+  },
+  {
+    "id": "movie-6",
+    "title": "Black Panther",
+    "genre": "Action",
+    "duration": "134 min",
+    "rating": "7.3",
+    "description": "T'Challa returns home to Wakanda to take his rightful place as king.",
+    "image": "https://via.placeholder.com/300x450/333/fff?text=Black+Panther",
+    "showtimes": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM", "10:00 PM"],
+    "price": 12.0
+  }
+]
