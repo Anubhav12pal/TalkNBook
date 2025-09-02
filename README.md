@@ -7,7 +7,8 @@ A full-stack movie ticket booking application built with FastAPI (Python) backen
 - **User Authentication**: Secure login/signup with JWT tokens
 - **Movie Browsing**: View movies with ratings, genres, and showtimes
 - **Seat Selection**: Interactive seat map with real-time availability
-- **Booking Management**: Create, view, and cancel movie bookings
+- **Booking Management**: Create, view, and manage movie bookings
+- **Selective Cancellation**: Cancel individual seats or entire bookings
 - **Search & Filter**: Find movies by title or filter by genre
 - **Responsive Design**: Works on desktop and mobile devices
 
@@ -119,7 +120,8 @@ TalkNBook/
 - `GET /bookings/` - Get user's bookings (authenticated)
 - `POST /bookings/booked-seats` - Get booked seats for movie/showtime
 - `GET /bookings/{booking_id}` - Get specific booking (authenticated)
-- `DELETE /bookings/{booking_id}` - Cancel booking (authenticated)
+- `DELETE /bookings/{booking_id}` - Cancel entire booking (authenticated)
+- `POST /bookings/{booking_id}/cancel-seats` - Cancel specific seats (authenticated)
 
 ## 🎭 Usage
 
@@ -128,7 +130,7 @@ TalkNBook/
 3. **Click on a movie** to view showtimes and book tickets
 4. **Select your seats** from the interactive seat map
 5. **Confirm your booking** and view it in "My Bookings"
-6. **Manage bookings** - view history and cancel if needed
+6. **Manage bookings** - view history, cancel individual seats, or cancel entire bookings
 
 ## 🧪 Test Users
 
@@ -209,6 +211,33 @@ The system includes a test user for demonstration:
 - **Interactive Elements**: Hover effects and smooth transitions
 - **Real-time Updates**: Seat availability updates in real-time
 - **User Feedback**: Loading states and error handling
+- **Selective Cancellation Modal**: Interactive seat selection for partial cancellation
+
+## ✨ Selective Seat Cancellation
+
+The booking system supports granular seat management, allowing users to cancel individual seats from their bookings:
+
+### Features
+- **Individual Seat Selection**: Click on specific seats to toggle selection in the cancellation modal
+- **Partial Cancellation**: Cancel only some seats while keeping others active
+- **Price Recalculation**: Booking price automatically updates based on remaining seats  
+- **Full Cancellation**: If all seats are cancelled, the booking status changes to "cancelled"
+- **Validation**: Cannot cancel seats from already cancelled bookings
+
+### User Interface
+- **"Select Seats" Button**: Opens interactive modal for seat selection
+- **"Cancel All" Button**: Maintains existing full booking cancellation
+- **Visual Feedback**: Selected seats highlighted in red, counter shows selection count
+- **Confirmation**: Different messages for partial vs full cancellation
+
+### API Integration
+```json
+POST /bookings/{booking_id}/cancel-seats
+{
+  "booking_id": "booking-uuid",
+  "seats_to_cancel": ["A1", "A2"]
+}
+```
 
 ## 🔧 Development
 
