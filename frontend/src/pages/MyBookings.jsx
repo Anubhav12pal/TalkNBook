@@ -8,6 +8,8 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedSeats, setSelectedSeats] = useState({});
+  const [showCancelModal, setShowCancelModal] = useState(null);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -35,7 +37,7 @@ const MyBookings = () => {
   }, [user]);
 
   const handleCancelBooking = async (bookingId) => {
-    if (!confirm('Are you sure you want to cancel this booking?')) {
+    if (!confirm('Are you sure you want to cancel this entire booking?')) {
       return;
     }
 
@@ -45,6 +47,57 @@ const MyBookings = () => {
       fetchBookings(); // Refresh the bookings list
     } catch (err) {
       alert(`Failed to cancel booking: ${err.message}`);
+    }
+  };
+
+  const openCancelModal = (booking) => {
+    setShowCancelModal(booking);
+    setSelectedSeats({ [booking.id]: [] });
+  };
+
+  const closeCancelModal = () => {
+    setShowCancelModal(null);
+    setSelectedSeats({});
+  };
+
+  const toggleSeatSelection = (bookingId, seat) => {
+    setSelectedSeats(prev => {
+      const currentSeats = prev[bookingId] || [];
+      const isSelected = currentSeats.includes(seat);
+      
+      return {
+        ...prev,
+        [bookingId]: isSelected 
+          ? currentSeats.filter(s => s !== seat)
+          : [...currentSeats, seat]
+      };
+    });
+  };
+
+  const handleCancelSelectedSeats = async () => {
+    const bookingId = showCancelModal.id;
+    const seatsToCancel = selectedSeats[bookingId] || [];
+
+    if (seatsToCancel.length === 0) {
+      alert('Please select at least one seat to cancel');
+      return;
+    }
+
+    const confirmMessage = seatsToCancel.length === showCancelModal.seats.length 
+      ? 'This will cancel all seats and the entire booking. Continue?'
+      : `Cancel ${seatsToCancel.length} seat(s): ${seatsToCancel.join(', ')}?`;
+
+    if (!confirm(confirmMessage)) {
+      return;
+    }
+
+    try {
+      await bookingsAPI.cancelSeats(bookingId, seatsToCancel);
+      alert('Seats cancelled successfully');
+      closeCancelModal();
+      fetchBookings(); // Refresh the bookings list
+    } catch (err) {
+      alert(`Failed to cancel seats: ${err.message}`);
     }
   };
 
@@ -174,16 +227,88 @@ const MyBookings = () => {
                   {booking.status === 'confirmed' && (
                     <div className="flex gap-2">
                       <button
+                        onClick={() => openCancelModal(booking)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+                      >
+                        Select Seats
+                      </button>
+                      <button
                         onClick={() => handleCancelBooking(booking.id)}
                         className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
                       >
-                        Cancel
+                        Cancel All
                       </button>
                     </div>
                   )}
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Seat Selection Modal */}
+        {showCancelModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-dark-card border border-dark-border rounded-xl p-6 max-w-md w-full mx-4">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-semibold text-white">
+                  Select Seats to Cancel
+                </h3>
+                <button
+                  onClick={closeCancelModal}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+              
+              <div className="mb-4">
+                <p className="text-gray-300 mb-2">
+                  Movie: <span className="text-white">{showCancelModal.movie_title}</span>
+                </p>
+                <p className="text-gray-300 mb-4">
+                  Showtime: <span className="text-white">{showCancelModal.showtime}</span>
+                </p>
+                <p className="text-gray-300 mb-3">Select seats to cancel:</p>
+                
+                <div className="grid grid-cols-3 gap-2">
+                  {showCancelModal.seats.map((seat) => {
+                    const isSelected = selectedSeats[showCancelModal.id]?.includes(seat);
+                    return (
+                      <button
+                        key={seat}
+                        onClick={() => toggleSeatSelection(showCancelModal.id, seat)}
+                        className={`
+                          px-3 py-2 rounded text-sm font-medium transition-colors
+                          ${isSelected 
+                            ? 'bg-red-600 text-white' 
+                            : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                          }
+                        `}
+                      >
+                        {seat}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              <div className="flex gap-3">
+                <button
+                  onClick={handleCancelSelectedSeats}
+                  disabled={!selectedSeats[showCancelModal.id]?.length}
+                  className="flex-1 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Cancel Selected ({selectedSeats[showCancelModal.id]?.length || 0})
+                </button>
+                <button
+                  onClick={closeCancelModal}
+                  className="flex-1 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>

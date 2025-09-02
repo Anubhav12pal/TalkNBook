@@ -100,4 +100,14 @@ export const bookingsAPI = {
       method: 'DELETE',
     });
   },
+
+  cancelSeats: async (bookingId, seatsToCancel) => {
+    return apiRequest(`/bookings/${bookingId}/cancel-seats`, {
+      method: 'POST',
+      body: JSON.stringify({
+        booking_id: bookingId,
+        seats_to_cancel: seatsToCancel,
+      }),
+    });
+  },
 };

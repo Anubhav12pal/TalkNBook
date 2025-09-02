@@ -142,3 +142,60 @@ class BookingService:
                 return True
         
         return False
+    
+    def cancel_seats(self, booking_id: str, seats_to_cancel: List[str], user_id: str) -> Dict[str, Any]:
+        """
+        Cancel specific seats from a booking.
+        
+        Args:
+            booking_id: ID of the booking
+            seats_to_cancel: List of seat IDs to cancel
+            user_id: ID of the user (for authorization)
+            
+        Returns:
+            Dict containing the updated booking info and operation result
+        """
+        bookings = self._load_bookings()
+        
+        for booking in bookings:
+            if booking["id"] == booking_id and booking["user_id"] == user_id:
+                if booking["status"] != "confirmed":
+                    return {"success": False, "message": "Can only cancel seats from confirmed bookings"}
+                
+                # Check if all seats to cancel exist in the booking
+                current_seats = set(booking["seats"])
+                seats_to_cancel_set = set(seats_to_cancel)
+                
+                if not seats_to_cancel_set.issubset(current_seats):
+                    invalid_seats = seats_to_cancel_set - current_seats
+                    return {"success": False, "message": f"Seats {list(invalid_seats)} are not in this booking"}
+                
+                # Remove the seats
+                remaining_seats = list(current_seats - seats_to_cancel_set)
+                
+                if not remaining_seats:
+                    # If no seats remain, cancel the entire booking
+                    booking["status"] = "cancelled"
+                    booking["seats"] = []
+                    booking["total_price"] = 0.0
+                    self._save_bookings(bookings)
+                    return {
+                        "success": True, 
+                        "message": "All seats cancelled, booking status changed to cancelled",
+                        "booking": booking
+                    }
+                else:
+                    # Update the booking with remaining seats and recalculate price
+                    seat_price = booking["total_price"] / len(booking["seats"])  # Calculate price per seat
+                    new_total_price = seat_price * len(remaining_seats)
+                    
+                    booking["seats"] = remaining_seats
+                    booking["total_price"] = round(new_total_price, 2)
+                    self._save_bookings(bookings)
+                    return {
+                        "success": True,
+                        "message": f"Successfully cancelled {len(seats_to_cancel)} seat(s)",
+                        "booking": booking
+                    }
+        
+        return {"success": False, "message": "Booking not found or access denied"}

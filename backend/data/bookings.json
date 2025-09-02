@@ -43,5 +43,85 @@
     "total_price": 48.0,
     "booking_date": "2025-09-01T23:44:53.553145",
     "status": "confirmed"
+  },
+  {
+    "id": "bfb94f0f-61b7-4b0e-90a7-9233c89507fb",
+    "user_id": "11b715f2-e1d6-4f0c-b15d-0d8e8bae7c14",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "7:00 PM",
+    "seats": [
+      "F6",
+      "E6",
+      "D6",
+      "C6",
+      "B6",
+      "A6"
+    ],
+    "total_price": 72.0,
+    "booking_date": "2025-09-01T23:46:04.855698",
+    "status": "cancelled"
+  },
+  {
+    "id": "c769c4fe-5424-4b04-93bd-8b47e3c0f64a",
+    "user_id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "movie_id": "movie-6",
+    "movie_title": "Black Panther",
+    "showtime": "7:00 PM",
+    "seats": [
+      "A1",
+      "F8",
+      "F1",
+      "A8"
+    ],
+    "total_price": 48.0,
+    "booking_date": "2025-09-01T23:51:14.669998",
+    "status": "cancelled"
+  },
+  {
+    "id": "9990b25f-dbb7-4708-b343-e7e09cf3ecfc",
+    "user_id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "7:00 PM",
+    "seats": [
+      "A1",
+      "A8",
+      "F8",
+      "F1"
+    ],
+    "total_price": 48.0,
+    "booking_date": "2025-09-02T18:39:02.560305",
+    "status": "cancelled"
+  },
+  {
+    "id": "789ebc4d-f6cc-4cc2-b927-a055c0b545f6",
+    "user_id": "fa998f15-e8be-449d-898d-445736260caf",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "7:00 PM",
+    "seats": [
+      "D5",
+      "D3",
+      "E3",
+      "E5"
+    ],
+    "total_price": 48.0,
+    "booking_date": "2025-09-02T18:39:48.232808",
+    "status": "confirmed"
+  },
+  {
+    "id": "07aeaef5-5b45-4b7f-8f4d-d72d64152364",
+    "user_id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "7:00 PM",
+    "seats": [
+      "A2",
+      "A4"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2025-09-02T18:46:16.405008",
+    "status": "confirmed"
   }
 ]

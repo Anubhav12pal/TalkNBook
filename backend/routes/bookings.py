@@ -2,7 +2,7 @@ from typing import Annotated, List
 
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from models.booking import BookingCreate, BookingResponse, BookedSeatsRequest, BookedSeatsResponse
+from models.booking import BookingCreate, BookingResponse, BookedSeatsRequest, BookedSeatsResponse, CancelSeatsRequest
 from services.booking_service import BookingService
 from routes.auth import get_current_user
 
@@ -102,3 +102,30 @@ async def cancel_booking(
         )
     
     return {"message": "Booking cancelled successfully"}
+
+
+@router.post("/{booking_id}/cancel-seats")
+async def cancel_seats(
+    booking_id: str,
+    request: CancelSeatsRequest,
+    current_user: Annotated[dict, Depends(get_current_user)]
+):
+    """Cancel specific seats from a booking."""
+    if request.booking_id != booking_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Booking ID in path must match booking ID in request body"
+        )
+    
+    result = booking_service.cancel_seats(booking_id, request.seats_to_cancel, current_user["id"])
+    
+    if not result["success"]:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=result["message"]
+        )
+    
+    return {
+        "message": result["message"],
+        "booking": BookingResponse(**result["booking"])
+    }

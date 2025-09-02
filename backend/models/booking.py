@@ -36,3 +36,9 @@ class BookedSeatsResponse(BaseModel):
     movie_id: str
     showtime: str
     booked_seats: List[str]
+
+
+class CancelSeatsRequest(BaseModel):
+    """Model for selective seat cancellation request."""
+    booking_id: str
+    seats_to_cancel: List[str]

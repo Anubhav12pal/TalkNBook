@@ -26,5 +26,12 @@
     "email": "aa@gmail.com",
     "hashed_password": "$2b$12$OPaJDdHhWJCE4TpZTG0stu85LYmWWNYZEhQ.b74AhPMZiHq9lvzgC",
     "created_at": "2025-09-02T04:26:50.657712"
+  },
+  {
+    "id": "fa998f15-e8be-449d-898d-445736260caf",
+    "username": "lol",
+    "email": "aaa@gmail.com",
+    "hashed_password": "$2b$12$tz1juJmXayr4m1J7hGpm2O0ptNuj1cdrvn/0QbZSEpJdk7BWvYKrK",
+    "created_at": "2025-09-02T23:39:37.303590"
   }
 ]
