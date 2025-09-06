@@ -123,5 +123,163 @@
     "total_price": 24.0,
     "booking_date": "2025-09-02T18:46:16.405008",
     "status": "confirmed"
+  },
+  {
+    "id": "7dc85b98-55b8-481b-8101-b217862c02e0",
+    "user_id": "7de5f66c-f88c-4d59-8553-83adcbe34d5d",
+    "movie_id": "movie-1",
+    "movie_title": "Avengers: Endgame",
+    "showtime": "7:00 PM",
+    "seats": [
+      "D2"
+    ],
+    "total_price": 12.0,
+    "booking_date": "2025-09-05T17:53:01.729430",
+    "status": "confirmed"
+  },
+  {
+    "id": "cb0c6467-b756-4a45-b1a3-826cddacf350",
+    "user_id": "8df2218f-3bae-4249-bf6f-b40137a632f1",
+    "movie_id": "movie-1",
+    "movie_title": "Avengers: Endgame",
+    "showtime": "7:00 PM",
+    "seats": [
+      "A4",
+      "A5"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2025-09-05T18:25:52.849177",
+    "status": "confirmed"
+  },
+  {
+    "id": "c979899b-6b9b-4a0b-a678-b69c5f9e97f7",
+    "user_id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "movie_id": "movie-1",
+    "movie_title": "Avengers: Endgame",
+    "showtime": "7:00 PM",
+    "seats": [
+      "A6",
+      "A7"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2025-09-05T18:34:33.204350",
+    "status": "confirmed"
+  },
+  {
+    "id": "ed2aaac8-7779-4fb7-90b0-9ecc91d3ec2b",
+    "user_id": "407efffc-daaa-4a41-b5fc-4e7a2ae5c1e1",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "7:00 PM",
+    "seats": [
+      "C3",
+      "C4"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2025-09-05T20:28:21.870167",
+    "status": "confirmed"
+  },
+  {
+    "id": "893fb7b9-4d1f-4926-85a8-e9148a8e001c",
+    "user_id": "8fc87a1c-37dd-4a5d-8058-7e369ecbf5b2",
+    "movie_id": "movie-1",
+    "movie_title": "Avengers: Endgame",
+    "showtime": "4:00 PM",
+    "seats": [
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "total_price": 36.0,
+    "booking_date": "2025-09-05T20:36:42.258284",
+    "status": "confirmed"
+  },
+  {
+    "id": "3f06410b-d2a5-4bb4-b0d5-3f7673d73c01",
+    "user_id": "8fc87a1c-37dd-4a5d-8058-7e369ecbf5b2",
+    "movie_id": "movie-4",
+    "movie_title": "Dune",
+    "showtime": "4:00 PM",
+    "seats": [
+      "D7",
+      "D8"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2025-09-05T20:42:21.337700",
+    "status": "confirmed"
+  },
+  {
+    "id": "7e0d1232-2842-4ebb-980b-03d8cded0d31",
+    "user_id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "movie_id": "movie-5",
+    "movie_title": "Top Gun: Maverick",
+    "showtime": "4:00 PM",
+    "seats": [
+      "E9",
+      "E10"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2025-09-05T20:43:22.011904",
+    "status": "confirmed"
+  },
+  {
+    "id": "d96ec101-3c86-4ad3-8d62-da98a38e10a7",
+    "user_id": "8df2218f-3bae-4249-bf6f-b40137a632f1",
+    "movie_id": "movie-1",
+    "movie_title": "Avengers: Endgame",
+    "showtime": "10:00 AM",
+    "seats": [
+      "E1",
+      "E2",
+      "E3"
+    ],
+    "total_price": 36.0,
+    "booking_date": "2025-09-05T20:58:09.165904",
+    "status": "confirmed"
+  },
+  {
+    "id": "0cd92aea-46b4-42bf-acc0-e813f17a3648",
+    "user_id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "movie_id": "movie-1",
+    "movie_title": "Avengers: Endgame",
+    "showtime": "10:00 AM",
+    "seats": [
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "total_price": 36.0,
+    "booking_date": "2025-09-05T21:02:25.354683",
+    "status": "confirmed"
+  },
+  {
+    "id": "aff794e8-39de-4535-bb6a-d59284c9a889",
+    "user_id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "movie_id": "movie-4",
+    "movie_title": "Dune",
+    "showtime": "10:00 AM",
+    "seats": [
+      "D10",
+      "E10",
+      "F10"
+    ],
+    "total_price": 36.0,
+    "booking_date": "2025-09-05T21:04:54.027116",
+    "status": "confirmed"
+  },
+  {
+    "id": "03f960fe-ad32-4ba1-8baa-7420c36e8dba",
+    "user_id": "b55d0934-889e-4e6e-82fe-8052945ea739",
+    "movie_id": "movie-4",
+    "movie_title": "Dune",
+    "showtime": "10:00 AM",
+    "seats": [
+      "A1",
+      "A2",
+      "A3"
+    ],
+    "total_price": 36.0,
+    "booking_date": "2025-09-05T21:11:56.091678",
+    "status": "confirmed"
   }
 ]

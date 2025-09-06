@@ -61,7 +61,7 @@ const Booking = () => {
   }
 
   const rows = ['A', 'B', 'C', 'D', 'E', 'F'];
-  const seatsPerRow = 8;
+  const seatsPerRow = 10;
 
   const generateSeatId = (row, number) => `${row}${number}`;
 
