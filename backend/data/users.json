@@ -1,37 +1,9 @@
 [
   {
-    "id": "11b715f2-e1d6-4f0c-b15d-0d8e8bae7c14",
-    "username": "testuser",
-    "email": "test@example.com",
-    "hashed_password": "$2b$12$7xoz7VicreR7MRDxXtpDVeCtYJI1p2gxC5FCMAcszODm32w2MytC.",
-    "created_at": "2025-08-28T19:52:11.130245"
-  },
-  {
-    "id": "2555e27e-7e93-496e-96ef-de7262a977b9",
-    "username": "aa",
-    "email": "abc@gmail.com",
-    "hashed_password": "$2b$12$D3kXadWbitMt7xXnik4CR.XkFjjv4HbRpzJnUoNAymSvNf3I3yJ6i",
-    "created_at": "2025-08-28T22:25:15.023019"
-  },
-  {
-    "id": "4665cf90-c9cd-4893-b03c-4d3dcb77f185",
-    "username": "Anubhavpal97@gmail.com",
-    "email": "anubhavpal97@gmail.com",
-    "hashed_password": "$2b$12$zXZzqDVpAYvPxUcvGLG37uvQVLdWp0vix8pNHVA.lmLgy4GX/KQQa",
-    "created_at": "2025-08-29T18:23:43.538267"
-  },
-  {
-    "id": "b55d0934-889e-4e6e-82fe-8052945ea739",
-    "username": "aa@gmail.com",
-    "email": "aa@gmail.com",
-    "hashed_password": "$2b$12$OPaJDdHhWJCE4TpZTG0stu85LYmWWNYZEhQ.b74AhPMZiHq9lvzgC",
-    "created_at": "2025-09-02T04:26:50.657712"
-  },
-  {
-    "id": "fa998f15-e8be-449d-898d-445736260caf",
-    "username": "lol",
-    "email": "aaa@gmail.com",
-    "hashed_password": "$2b$12$tz1juJmXayr4m1J7hGpm2O0ptNuj1cdrvn/0QbZSEpJdk7BWvYKrK",
-    "created_at": "2025-09-02T23:39:37.303590"
+    "id": "fff13d7a-6b26-454e-9b6a-f7b5c469574d",
+    "username": "qq",
+    "email": "a@gmail.com",
+    "hashed_password": "$2b$12$ydfKywn9xUWT56gJYONQ0.GjRTpP/KFcu8CO8A6ZLlBDIf5G2KlFa",
+    "created_at": "2025-09-30T00:38:32.044587"
   }
 ]
