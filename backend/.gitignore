@@ -76,4 +76,8 @@ htmlcov/
 # Temporary files
 .tmp/
 .temp/
+
+# Project documentation and notes
 CLAUDE.md
+notes.md
+Notes.py
