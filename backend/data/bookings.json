@@ -75,18 +75,30 @@
     "movie_title": "Avengers: Endgame",
     "showtime": "7:00 PM",
     "seats": [
-      "B1",
-      "B2",
-      "A4396",
+      "A995",
       "B2",
       "C6",
-      "A995",
-      "B0",
+      "A4396",
       "D9",
-      "E6"
+      "E6",
+      "B0"
     ],
-    "total_price": 108.0,
+    "total_price": 84.0,
     "booking_date": "2025-09-29T23:05:43.262640",
+    "status": "confirmed"
+  },
+  {
+    "id": "d6202b90-8ad2-4a83-b917-e8b0c8406a8d",
+    "user_id": "7a4396b2-4c6b-45db-a995-fafdb0d9aee6",
+    "movie_id": "movie-1",
+    "movie_title": "Avengers: Endgame",
+    "showtime": "7:00 PM",
+    "seats": [
+      "C1",
+      "C2"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2025-10-01T14:11:08.845157",
     "status": "confirmed"
   }
 ]

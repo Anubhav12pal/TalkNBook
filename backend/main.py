@@ -2,9 +2,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 
+from dotenv import load_dotenv
+
+# Load .env before any module that reads env vars (notably voice/agents.py
+# picking up OPENAI_API_KEY and OPENAI_AGENT_MODEL).
+load_dotenv()
+
 from routes.auth import router as auth_router
 from routes.bookings import router as bookings_router
 from routes.movies import router as movies_router
+from routes.voice import router as voice_router
 
 app = FastAPI(title="TalkNBook API", description="Movie booking application API")
 
@@ -22,6 +29,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(bookings_router)
 app.include_router(movies_router)
+app.include_router(voice_router)
 
 @app.get("/")
 def read_root():

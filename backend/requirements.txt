@@ -4,3 +4,7 @@ pydantic[email]
 python-jose[cryptography]
 passlib[bcrypt]
 python-multipart
+python-dotenv
+bcrypt
+openai>=1.50.0
+openai-agents>=0.0.10

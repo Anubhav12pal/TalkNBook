@@ -483,13 +483,13 @@ async def main():
 
     # Test 3: Direct authentication test - register
     print("3. Testing direct authentication - registration...")
-    result3 = await Runner.run(auth_agent, "Register me with username 'agentuser', password 'secure123', and email 'agent@test.com'")
+    result3 = await Runner.run(auth_agent, "Register me with username 'Pavan', password '1111', and email 'aa@gmail.com'")
     print("Result:", result3.final_output)
     print("\n" + "-" * 40 + "\n")
 
     # Test 4: Direct authentication test - login
     print("4. Testing direct authentication - login...")
-    result4 = await Runner.run(auth_agent, "Login with username 'agentuser' and password 'secure123'")
+    result4 = await Runner.run(auth_agent, "Login with username 'Pavan' and password '1111'")
     print("Result:", result4.final_output)
 
     # Extract session_id for further testing
