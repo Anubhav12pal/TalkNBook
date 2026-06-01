@@ -46,20 +46,19 @@ class MovieService:
         return None
     
     def search_movies(self, query: str) -> List[Dict[str, Any]]:
-        """
-        Search movies by title.
-        
-        Args:
-            query: Search query
-            
-        Returns:
-            List of matching movies
-        """
+        import re
         movies = self._load_movies()
-        query_lower = query.lower()
+
+        def normalize(s):
+            # Remove all non-alphanumeric chars so "Spider-Man" -> "spiderman"
+            return re.sub(r"[^a-z0-9]", "", s.lower())
+
+        q = normalize(query)
+        if not q:
+            return []
         return [
-            movie for movie in movies
-            if query_lower in movie["title"].lower() or query_lower in movie["genre"].lower()
+            m for m in movies
+            if q in normalize(m["title"]) or q in normalize(m["genre"])
         ]
     
     def get_movies_by_genre(self, genre: str) -> List[Dict[str, Any]]:

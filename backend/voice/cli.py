@@ -37,8 +37,8 @@ def _parse_args() -> argparse.Namespace:
 
 async def _run() -> int:
     args = _parse_args()
-    if not os.getenv("OPENAI_API_KEY"):
-        print("ERROR: OPENAI_API_KEY is not set. Add it to backend/.env or export it.",
+    if not any([os.getenv("OPENAI_API_KEY"), os.getenv("OPENROUTER_API_KEY"), os.getenv("OLLAMA_BASE_URL")]):
+        print("ERROR: No LLM provider configured. Set OPENAI_API_KEY, OPENROUTER_API_KEY, or OLLAMA_BASE_URL in backend/.env.",
               file=sys.stderr)
         return 1
 

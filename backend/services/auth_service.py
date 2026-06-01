@@ -4,22 +4,21 @@ import uuid
 from datetime import datetime, timedelta
 from typing import Optional
 
+import bcrypt
 from fastapi import HTTPException, status
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 
 from models.user import UserCreate, UserLogin, UserResponse
 
 
 class AuthService:
     """Service for handling authentication operations."""
-    
+
     SECRET_KEY = "your-secret-key-change-in-production"
     ALGORITHM = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES = 30
-    
+
     def __init__(self):
-        self.pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
         self.db_path = os.path.join(os.path.dirname(__file__), "../data/users.json")
         self._ensure_db_exists()
     
@@ -44,12 +43,10 @@ class AuthService:
             json.dump(users, f, indent=2, default=str)
     
     def verify_password(self, plain_password: str, hashed_password: str) -> bool:
-        """Verify a password against its hash."""
-        return self.pwd_context.verify(plain_password, hashed_password)
-    
+        return bcrypt.checkpw(plain_password.encode(), hashed_password.encode())
+
     def get_password_hash(self, password: str) -> str:
-        """Hash a password."""
-        return self.pwd_context.hash(password)
+        return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
     
     def get_user_by_email(self, email: str) -> Optional[dict]:
         """Get user by email from database."""
