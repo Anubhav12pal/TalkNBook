@@ -1,6 +1,3 @@
-# Knowledge-graph artifacts (regenerate locally with /graphify)
-graphify-out/
-
 # OS / editor noise that may not be caught in subdir gitignores
 .DS_Store
 .idea/
