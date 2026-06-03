@@ -12,5 +12,19 @@
     "email": "agent@test.com",
     "hashed_password": "$2b$12$D19t.WlMQGrKjARnMD09G.TZkbeH9X5ldTpvnC16q3v50WLx.euUK",
     "created_at": "2025-09-29T23:00:47.288291"
+  },
+  {
+    "id": "352b6b2f-4c1f-4f81-8078-6dc1352bac6d",
+    "username": "testuser2",
+    "email": "test2@test.com",
+    "hashed_password": "$2b$12$A7t0fqjV7xJHuHreLBQNn.wZgP/LRzwz.J/GTwYoT8yDWb.bWkO42",
+    "created_at": "2026-06-01T01:20:28.934738"
+  },
+  {
+    "id": "13d87fcc-62b5-4a29-b757-e98692a31e17",
+    "username": "aadad",
+    "email": "adad@gmail.com",
+    "hashed_password": "$2b$12$6yFQ6BX6gbi8M/XRq.MxY.A7ZNVFtmqQ9oRFg81XL0VlbivVtZgAS",
+    "created_at": "2026-06-01T01:21:09.557005"
   }
 ]

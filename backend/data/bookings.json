@@ -100,5 +100,60 @@
     "total_price": 24.0,
     "booking_date": "2025-10-01T14:11:08.845157",
     "status": "confirmed"
+  },
+  {
+    "id": "6ed3e7c7-86ec-4e10-889c-a33736d665cb",
+    "user_id": "5bc2b6c9-12b5-413d-82db-eb9baf09afe1",
+    "movie_id": "movie-4",
+    "movie_title": "Dune",
+    "showtime": "7:00 PM",
+    "seats": [
+      "A1",
+      "A2"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2026-05-31T20:03:33.425065",
+    "status": "cancelled"
+  },
+  {
+    "id": "8a165656-e9af-46c8-bd51-1565ee24a95b",
+    "user_id": "5bc2b6c9-12b5-413d-82db-eb9baf09afe1",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "10:00 AM",
+    "seats": [
+      "C3",
+      "C4"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2026-05-31T20:15:18.819333",
+    "status": "confirmed"
+  },
+  {
+    "id": "1996c455-aa85-43b3-94c9-742455f1413f",
+    "user_id": "13d87fcc-62b5-4a29-b757-e98692a31e17",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "10:00 AM",
+    "seats": [
+      "C6"
+    ],
+    "total_price": 12.0,
+    "booking_date": "2026-05-31T20:21:20.987396",
+    "status": "confirmed"
+  },
+  {
+    "id": "75155e99-bf03-4aef-a30b-2e6a4ee35703",
+    "user_id": "5bc2b6c9-12b5-413d-82db-eb9baf09afe1",
+    "movie_id": "movie-2",
+    "movie_title": "Spider-Man: No Way Home",
+    "showtime": "10:00 AM",
+    "seats": [
+      "A1",
+      "A2"
+    ],
+    "total_price": 24.0,
+    "booking_date": "2026-05-31T20:24:50.442372",
+    "status": "confirmed"
   }
 ]
